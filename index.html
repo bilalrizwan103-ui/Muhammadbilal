@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Bilal — Digital Insights & Growth Strategist</title>
+    <meta name="description" content="Muhammad Bilal turns complex data into decisions people actually use. Growth strategist, AI analytics expert, and award-winning marketer.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #86868b;
+            --background: #ffffff;
+            --surface: #f5f5f7;
+            --accent: #0071e3;
+            --text: #1d1d1f;
+            --border: #d2d2d7;
+            --success: #34c759;
+            --lipton: #E31837;
+            --bat: #00205B;
+            --creditbook: #1e3a8a;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            overflow-x: hidden;
+        }
+        
+        .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+        
+        h1 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+        
+        p {
+            font-size: 19px;
+            line-height: 1.4211;
+            color: var(--secondary);
+            max-width: 600px;
+        }
+        
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        section { padding: 100px 0; position: relative; }
+        
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled { background: rgba(255, 255, 255, 0.95); }
+        
+        .nav-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--text);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after { width: 100%; }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+        }
+        
+        .hero h1 {
+            font-size: 64px;
+            background: linear-gradient(135deg, #1d1d1f 0%, #434344 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hook {
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--text);
+            margin: 24px 0 32px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.2s forwards;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.4s forwards;
+        }
+        
+        .hero-image {
+            position: relative;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.6s forwards;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 24px;
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.15);
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border-radius: 980px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: #0077ed; transform: scale(1.02); }
+        .btn-secondary { background: var(--surface); color: var(--text); }
+        .btn-secondary:hover { background: #e8e8ed; }
+        
+        .stats { background: var(--surface); padding: 60px 0; }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-item { opacity: 0; transform: translateY(20px); }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text);
+            display: block;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--secondary);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        
+        .differentiator {
+            background: var(--text);
+            color: white;
+            text-align: center;
+        }
+        
+        .differentiator h2 {
+            color: white;
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+        
+        .differentiator p {
+            color: #86868b;
+            font-size: 21px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .highlight { color: #2997ff; font-weight: 600; }
+        
+        .projects { background: var(--surface); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .projects-grid { display: grid; gap: 24px; }
+        
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            border: 1px solid transparent;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--border);
+        }
+        
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img { transform: scale(1.05); }
+        
+        .project-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        
+        .project-title { font-size: 24px; font-weight: 600; }
+        
+        .project-badge {
+            background: var(--surface);
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .project-badge.award { background: #fff3cd; color: #856404; }
+        
+        .project-description {
+            font-size: 17px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .project-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+        
+        .tool-tag {
+            background: var(--surface);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: var(--text);
+            font-weight: 500;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            margin-top: 20px;
+            transition: gap 0.3s;
+        }
+        
+        .project-link:hover { gap: 10px; }
+        
+        .experience { background: white; }
+        
+        .timeline-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--creditbook) 0%, var(--lipton) 50%, var(--bat) 100%);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .timeline-item.visible { opacity: 1; transform: translateY(0); }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 2;
+            text-align: left;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-visual {
+            grid-column: 1;
+            grid-row: 1;
+            text-align: right;
+        }
+        
+        .timeline-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 16px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-visual { align-items: flex-start; }
+        
+        .company-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            object-fit: contain;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .company-logo:hover { transform: scale(1.05); }
+        
+        .timeline-date {
+            background: var(--surface);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            display: inline-block;
+        }
+        
+        .timeline-content { padding: 20px 0; }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 60px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 4px solid var(--accent);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        .timeline-item.current .timeline-dot {
+            background: var(--accent);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 113, 227, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(0, 113, 227, 0); }
+        }
+        
+        .company { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+        .role { font-size: 18px; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+        .timeline-desc { font-size: 16px; color: var(--secondary); line-height: 1.5; }
+        
+        .skills { background: var(--surface); }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-category:hover { transform: translateY(-4px); }
+        
+        .skill-category h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--surface);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        .skill-list { list-style: none; }
+        
+        .skill-list li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--secondary);
+            border-bottom: 1px solid var(--surface);
+        }
+        
+        .skill-list li:last-child { border-bottom: none; }
+        
+        .contact {
+            background: var(--text);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact h2 { color: white; font-size: 48px; }
+        
+        .contact-subtitle {
+            font-size: 21px;
+            color: #86868b;
+            margin-bottom: 40px;
+        }
+        
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .contact-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 16px 28px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #86868b;
+            font-size: 16px;
+        }
+        
+        .contact-item a {
+            color: #2997ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-item a:hover { text-decoration: underline; }
+        
+        footer {
+            background: var(--text);
+            color: #86868b;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 968px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .hero h1 { font-size: 48px; }
+            .hook { font-size: 21px; }
+            .hero-image img { max-width: 300px; }
+            .project-card { grid-template-columns: 1fr; }
+            .project-image { min-height: 200px; }
+            .timeline-line { left: 30px; }
+            .timeline-item { grid-template-columns: 1fr; gap: 20px; padding-left: 70px; }
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-visual { grid-column: 1; text-align: left; }
+            .timeline-visual { align-items: flex-start !important; flex-direction: row; gap: 16px; }
+            .timeline-dot { left: 30px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--surface); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          html { scroll-behavior: auto; }
+          * { animation: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="nav-content">
+            <div class="logo">MB</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="about">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="eyebrow">Digital Insights & Growth Strategist</div>
+                <h1>Muhammad Bilal</h1>
+                <p class="hook">"I turn complex data into decisions people actually use."</p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/img/bilal-headshot.jpg" alt="Muhammad Bilal - Professional Headshot">
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="20" data-suffix="+">0</span>
+                    <div class="stat-label">Hours Saved Monthly</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="100" data-suffix="">0</span>
+                    <div class="stat-label">Point Customer Score</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="3" data-suffix="">0</span>
+                    <div class="stat-label">Industries Transformed</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="1" data-suffix="">0</span>
+                    <div class="stat-label">Award Won</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="differentiator">
+        <div class="container">
+            <h2>I don't just analyze data — <br><span class="highlight">I democratize it.</span></h2>
+            <p>From building AI data bots to designing customer intelligence models and award-winning campaigns, I consistently turn complexity into clarity. Equally comfortable in SQL, strategy rooms, and creative brainstorms — driving growth that actually scales.</p>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <div class="eyebrow">Portfolio</div>
+                <h2>Projects That Drive Impact</h2>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div style="color: white; font-size: 80px;">🤖</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">AI-Driven Shopify Intelligence</h3>
+                            <span class="project-badge">AI/Analytics</span>
+                        </div>
+                        <p class="project-description">
+                            Designed complex AI-assisted queries to power business-ready dashboards from Shopify data, saving 20+ hours monthly and enabling faster leadership decisions.
+                        </p>
+                        <div class="project-tools">
+                            <span class="tool-tag">SQL</span>
+                            <span class="tool-tag">Metabase</span>
+                            <span class="tool-tag">Power BI</span>
+                            <span class="tool-tag">AI Prompting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div style="color: white; font-size: 80px;">💬</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Company-Wide Data Bot</h3>
+                            <span class="project-badge">Automation</span>
+                        </div>
+                        <p class="project-description">
+                            Built and deployed a conversational analytics bot on Microsoft Copilot, allowing teams to access insights conversationally from a single source of truth—no Excel exports, no code.
+                        </p>
+                        <div class="project-tools">
+                            <span class="tool-tag">SQL</span>
+                            <span class="tool-tag">BI Layer</span>
+                            <span class="tool-tag">Microsoft Copilot</span>
+                            <span class="tool-tag">AI Workflows</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div style="color: white; font-size: 80px;">🎯</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Customer Scoring & Personalization</h3>
+                            <span class="project-badge">Strategy</span>
+                        </div>
+                        <p class="project-description">
+                            Created a 100-point customer scoring framework to identify high-value users, design targeted journeys, reduce marketing waste, and enable personalized communication at scale.
+                        </p>
+                        <div class="project-tools">
+                            <span class="tool-tag">SQL</span>
+                            <span class="tool-tag">Behavioral Analytics</span>
+                            <span class="tool-tag">Lifecycle Modeling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/img/mystery-box.jpg" alt="Lipton Mystery Box Campaign - 11.11">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Mystery Box Campaign</h3>
+                            <span class="project-badge award">🏆 Award Winner</span>
+                        </div>
+                        <p class="project-description">
+                            Led end-to-end execution of Lipton's biggest 11.11 breakthrough eCommerce campaign combining gamification and performance marketing, earning a Special Mention Award for innovation.
+                        </p>
+                        <div class="project-tools">
+                            <span class="tool-tag">Paid Media</span>
+                            <span class="tool-tag">Analytics</span>
+                            <span class="tool-tag">Experimentation</span>
+                            <span class="tool-tag">11.11 Campaign</span>
+                        </div>
+                        <a href="https://dragonsofasia.org/assets/pdf/2025/2025%20Dragons%20of%20Pakistan%20Winners%20Release.pdf"
+                           target="_blank" rel="noopener noreferrer" class="project-link">
+                            View Award Details →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <div class="eyebrow">Career Journey</div>
+                <h2>Experience Timeline</h2>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item current">
+                    <div class="timeline-visual">
+                        <img src="assets/img/bat-logo.jpg" alt="BAT Logo" class="company-logo" style="border: 2px solid var(--bat);">
+                        <span class="timeline-date">May 2025 - Present</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company">British American Tobacco</div>
+                        <div class="role">Digital Insights Executive</div>
+                        <div class="timeline-desc">
+                            Driving digital decision-making through automated analytics, AI-enabled insights, customer intelligence models, and growth strategy design across markets. Based in Canada.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-visual">
+                        <img src="assets/img/lipton-logo.jpg" alt="Lipton Logo" class="company-logo" style="border: 2px solid var(--lipton);">
+                        <span class="timeline-date">May 2023 - April 2025</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company">Lipton Teas & Infusions</div>
+                        <div class="role">Growth & eCommerce Lead</div>
+                        <div class="timeline-desc">
+                            Led large-scale eCommerce growth, cross-functional collaboration, and award-winning digital campaigns including the 11.11 Mystery Box activation across platforms and partners.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-visual">
+                        <img src="assets/img/creditbook-logo.jpg" alt="CreditBook Logo" class="company-logo" style="border: 2px solid var(--creditbook);">
+                        <span class="timeline-date">April 2022 - May 2023</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="company">CreditBook</div>
+                        <div class="role">Product Growth Associate</div>
+                        <div class="timeline-desc">
+                            Scaled fintech adoption through experimentation-led growth, localized user journeys, and efficient acquisition strategies at one of Pakistan's leading fintech startups.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <div class="eyebrow">Capabilities</div>
+                <h2>Tools & Expertise</h2>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><span class="skill-icon">📈</span> Growth & Marketing</h3>
+                    <ul class="skill-list">
+                        <li>Performance Marketing</li>
+                        <li>Product Growth</li>
+                        <li>Experimentation</li>
+                        <li>GTM Strategy</li>
+                        <li>User Journeys</li>
+                        <li>Personalization</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><span class="skill-icon">📊</span> Data & Analytics</h3>
+                    <ul class="skill-list">
+                        <li>SQL</li>
+                        <li>Power BI & Tableau</li>
+                        <li>Metabase</li>
+                        <li>Adobe Analytics</li>
+                        <li>GA4</li>
+                        <li>Amplitude & Mixpanel</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><span class="skill-icon">🤖</span> AI & Automation</h3>
+                    <ul class="skill-list">
+                        <li>AI Prompting for Analytics</li>
+                        <li>Conversational Data Bots</li>
+                        <li>Automated Reporting</li>
+                        <li>Workflow Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="eyebrow" style="color: #86868b;">Let's Connect</div>
+            <h2>Ready to drive growth together?</h2>
+            <p class="contact-subtitle">Open to strategic roles in growth, analytics, and digital transformation.</p>
+            
+            <div class="contact-grid">
+                <a href="mailto:bilalrizwan103@gmail.com" class="contact-btn">📧 Email Me</a>
+                <a href="https://www.linkedin.com/in/muhammad-bilal-46b330189"
+                   target="_blank" rel="noopener noreferrer" class="contact-btn">💼 LinkedIn</a>
+                <a href="tel:+923341368834" class="contact-btn">📱 Call Me</a>
+                <a href="#" class="contact-btn">📅 Schedule Call</a>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <a href="mailto:bilalrizwan103@gmail.com">bilalrizwan103@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>+92 334 1368834</span>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <a href="https://www.linkedin.com/in/muhammad-bilal-46b330189"
+                       target="_blank" rel="noopener noreferrer">linkedin.com/in/muhammad-bilal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Muhammad Bilal. Built with data-driven precision.</p>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+
+                if (entry.target.classList.contains('stat-item')) {
+                    const numberEl = entry.target.querySelector('.stat-number');
+                    const target = parseInt(numberEl.getAttribute('data-target'), 10);
+                    animateNumber(numberEl, target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item, .stat-item').forEach(el => observer.observe(el));
+
+        function animateNumber(element, target) {
+            let current = 0;
+            const steps = 50;
+            const increment = target / steps;
+            const suffix = element.getAttribute('data-suffix') || '';
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = `${target}${suffix}`;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = `${Math.floor(current)}`;
+                }
+            }, 30);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
